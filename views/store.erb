@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-sm-9">
+        <h1><%= @store[:store_name] %></h1>
+        <p><%= @store[:description] %></p>
+        <p><%= @store[:address] %></p>
+        <p><%= @store[:phone_number] %></p>
+        <p><%= @store[:website] %></p>
+        <a href="/stores/<%= @store[:id] %>/reviews/new" class="btn btn-primary">Review <%= @store[:store_name] %></a>
+    </div>
+</div>

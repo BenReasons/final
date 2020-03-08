@@ -14,9 +14,35 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
-events_table = DB.from(:events)
-rsvps_table = DB.from(:rsvps)
+stores_table = DB.from(:stores)
+reviews_table = DB.from(:reviews)
 
 get "/" do
-    puts events_table.all
+    puts stores_table.all
+    @stores = stores_table.all.to_a
+    view "stores"
+end
+
+get "/stores/:id" do
+    @store = stores_table.where(id: params[:id]).to_a[0]
+    @reviews = reviews_table.where(store_id: @store[:id])
+    # @going_count = rsvps_table.where(event_id: @event[:id], going: true).count
+    # @users_table = users_table
+    view "store"
+end
+
+get "/stores/:id/reviews/new" do
+    @store = stores_table.where(id: params[:id]).to_a[0]
+    view "new_review"
+end
+
+get "/stores/:id/reviews/create" do
+    puts params
+    @store = stores_table.where(id: params["id"]).to_a[0]
+    reviews_table.insert(store_id: params["id"],
+                       user_name: session["user_name"],
+                       rating: session["rating"],
+                       known_for: session["known_for"],
+                       comments: params["comments"])
+    view "create_review"
 end
