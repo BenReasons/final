@@ -46,3 +46,7 @@ get "/stores/:id/reviews/create" do
                        comments: params["comments"])
     view "create_review"
 end
+
+get "/users/new" do
+    view "new_user"
+end
