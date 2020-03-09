@@ -36,6 +36,7 @@ get "/stores/:id" do
     view "store"
 end
 
+
 get "/stores/:id/reviews/new" do
     @store = stores_table.where(id: params[:id]).to_a[0]
     view "new_review"
