@@ -4,8 +4,8 @@
         <p><%= @store[:description] %></p>
         <p><%= @store[:address] %></p>
         <p><%= @store[:phone_number] %></p>
-        <p><%= @store[:website] %></p>
-
+        <a href="<%= @store[:website] %>" target="_blank">Website</a>
+      
         <p class="mt-5">
             <% if @current_user %>
                 <a href="/stores/<%= @store[:id] %>/reviews/new" class="btn btn-primary">Review <%= @store[:store_name] %></a>
@@ -13,5 +13,14 @@
                 <a href="/logins/new" class="btn btn-danger">Please sign in to review <% @store[:store_name] %></a>
             <% end %>
         </p>
+    </div>
+    <div class="col-sm-3">
+        <iframe
+            width="350"
+            height="300"
+            frameborder="1" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
+                &q=<%= @lat %>,<%= @long %>&zoom=13" allowfullscreen>
+        </iframe>
     </div>
 </div>

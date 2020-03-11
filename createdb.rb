@@ -36,7 +36,7 @@ stores_table = DB.from(:stores)
 stores_table.insert(store_name: "Barnes & Noble - Gold Coast",
                     description: "Bookseller chain stocking housebrand eReader, plus a broad selection of titles for adults & kids.",
                     neighborhood: "Gold Coast",
-                    address: "1130 North State Street",
+                    address: "1130 North State Street, Chicago, IL 60610",
                     website: "https://stores.barnesandnoble.com/store/2922",
                     phone_number: "(312) 280-8155")
 

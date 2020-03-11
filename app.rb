@@ -1,7 +1,7 @@
 # Set up for the application and database. DO NOT CHANGE. #############################
 require "sinatra"                                                                     #
 require "sinatra/reloader" if development?                                            #
-# require "geocoder"                                                                    #
+require "geocoder"                                                                    #
 require "sequel"                                                                      #
 require "logger"                                                                      #
 require "twilio-ruby"                                                                 #
@@ -44,12 +44,11 @@ get "/stores/:id" do
     @store = stores_table.where(id: params[:id]).to_a[0]
     @reviews = reviews_table.where(store_id: @store[:id])
     @users_table = users_table
-
-    @location = stores_table.where
-    results = Geocoder.search(params["location"])
+    
+    results = Geocoder.search(@store[:address])
     lat_long = results.first.coordinates
-    lat = "#{lat_long[0]}"
-    long = "#{lat_long[1]}"
+    @lat = "#{lat_long[0]}"
+    @long = "#{lat_long[1]}"
 
     view "store"
 end
