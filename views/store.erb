@@ -5,6 +5,13 @@
         <p><%= @store[:address] %></p>
         <p><%= @store[:phone_number] %></p>
         <p><%= @store[:website] %></p>
-        <a href="/stores/<%= @store[:id] %>/reviews/new" class="btn btn-primary">Review <%= @store[:store_name] %></a>
+
+        <p class="mt-5">
+            <% if @current_user %>
+                <a href="/stores/<%= @store[:id] %>/reviews/new" class="btn btn-primary">Review <%= @store[:store_name] %></a>
+            <% else %>
+                <a href="/logins/new" class="btn btn-danger">Please sign in to review <% @store[:store_name] %></a>
+            <% end %>
+        </p>
     </div>
 </div>

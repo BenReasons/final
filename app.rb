@@ -1,6 +1,7 @@
 # Set up for the application and database. DO NOT CHANGE. #############################
 require "sinatra"                                                                     #
 require "sinatra/reloader" if development?                                            #
+# require "geocoder"                                                                    #
 require "sequel"                                                                      #
 require "logger"                                                                      #
 require "twilio-ruby"                                                                 #
@@ -14,16 +15,16 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
-account_sid = "AC5368d4383899306ddc2c299e97f20bad"
-auth_token = "96a9343b5449bbfa209de19ac330a69f"
+# account_sid = "AC5368d4383899306ddc2c299e97f20bad"
+# auth_token = "96a9343b5449bbfa209de19ac330a69f"
 
-client = Twilio::REST::Client.new(account_sid, auth_token)
+# client = Twilio::REST::Client.new(account_sid, auth_token)
 
-client.messages.create(
-  from: "+12054790201", 
-  to: "+16307793924",
-  body: "Hey KIEI 451!"
-)
+# client.messages.create(
+#   from: "+12054790201", 
+#   to: "+16307793924",
+#   body: "Hey KIEI 451!"
+# )
 
 stores_table = DB.from(:stores)
 reviews_table = DB.from(:reviews)
@@ -42,8 +43,7 @@ end
 get "/stores/:id" do
     @store = stores_table.where(id: params[:id]).to_a[0]
     @reviews = reviews_table.where(store_id: @store[:id])
-    # @going_count = rsvps_table.where(event_id: @event[:id], going: true).count
-    # @users_table = users_table
+    @users_table = users_table
     view "store"
 end
 
