@@ -45,7 +45,8 @@ get "/stores/:id" do
     @reviews = reviews_table.where(store_id: @store[:id])
     @users_table = users_table
     
-    results = Geocoder.search(@store[:address])
+    @full_address = "#{@store[:address]}, #{@store[:city]}, #{@store[:state]} #{@store[:zip_code]}"
+    results = Geocoder.search(@full_address)
     lat_long = results.first.coordinates
     @lat = "#{lat_long[0]}"
     @long = "#{lat_long[1]}"

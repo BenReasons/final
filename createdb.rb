@@ -11,6 +11,9 @@ DB.create_table! :stores do
   String :description
   String :neighborhood
   String :address
+  String :city
+  String :state
+  String :zip_code
   String :website
   String :phone_number
 end
@@ -36,7 +39,10 @@ stores_table = DB.from(:stores)
 stores_table.insert(store_name: "Barnes & Noble - Gold Coast",
                     description: "Bookseller chain stocking housebrand eReader, plus a broad selection of titles for adults & kids.",
                     neighborhood: "Gold Coast",
-                    address: "1130 North State Street, Chicago, IL 60610",
+                    address: "1130 North State Street",
+                    city: "Chicago",
+                    state: "IL",
+                    zip_code: "60610",
                     website: "https://stores.barnesandnoble.com/store/2922",
                     phone_number: "(312) 280-8155")
 
@@ -44,6 +50,9 @@ stores_table.insert(store_name: "Volumes",
                     description: "Family-run shop with a handpicked selection of titles & a sit-down space for espresso, beer & wine.",
                     neighborhood: "Gold Coast",
                     address: "900 North Michigan Avenue",
+                    city: "Chicago",
+                    state: "IL",
+                    zip_code: "60611",
                     website: "https://www.volumesbooks.com/",
                     phone_number: "(312) 846-6750")
 
@@ -51,5 +60,8 @@ stores_table.insert(store_name: "after-words bookstore",
                     description: "Independent bookstore offering a wide selection of new & used titles in vast, industrial-chic digs.",
                     neighborhood: "Streeterville",
                     address: "23 East Illinois Street",
+                    city: "Chicago",
+                    state: "IL",
+                    zip_code: "60611",
                     website: "http://www.after-wordschicago.com/",
                     phone_number: "(312) 464-1110")
