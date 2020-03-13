@@ -2,7 +2,8 @@
     <div class="col-sm-9">
         <h1><%= @store[:store_name] %></h1>
         <p><%= @store[:description] %></p>
-        <p><%= @full_address %></p>
+        <p><%= @store[:address] %></p>
+        <p><%= @store[:city] %>, <%= @store[:zip_code] %></p>
         <p><%= @store[:phone_number] %></p>
         <a href="<%= @store[:website] %>" target="_blank">Website</a>
       
@@ -22,5 +23,10 @@
             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
                 &q=<%= @lat %>,<%= @long %>&zoom=13" allowfullscreen>
         </iframe>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-9">
+        <h3>Reviews Section</h3>
     </div>
 </div>
