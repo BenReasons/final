@@ -64,7 +64,7 @@ get "/stores/:id/reviews/create" do
     puts params
     @store = stores_table.where(id: params["id"]).to_a[0]
     reviews_table.insert(store_id: params["id"],
-                       user_name: session["user_name"],
+                       user_id: session["user_id"],
                        rating: session["rating"],
                        known_for: session["known_for"],
                        comments: params["comments"])

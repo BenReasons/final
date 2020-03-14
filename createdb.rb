@@ -7,30 +7,29 @@ DB = Sequel.connect(connection_string)                                          
 # Database schema - this should reflect your domain model
 DB.create_table! :stores do
   primary_key :id
-  String :store_name
-  String :description
-  String :neighborhood
-  String :address
-  String :city
-  String :state
-  String :zip_code
-  String :website
-  String :phone_number
+    String :store_name
+    String :description
+    String :neighborhood
+    String :address
+    String :city
+    String :state
+    String :zip_code
+    String :website
+    String :phone_number
 end
 DB.create_table! :reviews do
     primary_key :id
     foreign_key :store_id
     foreign_key :user_id
-    String :user_name
     Float :rating
-    String :known_for
+    String :known_for, text: true
     String :comments, text: true
 end
 DB.create_table! :users do
-  primary_key :id
-  String :name
-  String :email
-  String :password
+    primary_key :id
+    String :name
+    String :email
+    String :password
 end
 
 # Seed Data
