@@ -1,5 +1,8 @@
 <h1>All Stores</h1>
 
+<p>Don't see your bookstore? Add Here:</p>
+<p><a href="/stores/new" class="btn btn-primary">New</a></p>
+
 <% for store in @stores %>
     <p><a href="/stores/<%= store[:id] %>"><%= store[:store_name] %></a></p>
 <% end %>

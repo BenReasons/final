@@ -1,0 +1,48 @@
+<form action="/stores/new">
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+            <label>Bookstore Name</label>
+            <input type="store" class="form-control" name="store_name">
+        </div>
+        <div class="form-group col-md-6">
+        <label>Neighborhood</label>
+        <input type="neighborhood" class="form-control" placeholder="ex: Gold Coast" name="neighborhood">
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Bookstore Description</label>
+        <textarea class="form-control" rows="3" name="description"></textarea>
+    </div>
+    <div class="form-group">
+        <label >Address</label>
+        <input type="text" class="form-control" name="address">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-4">
+            <label>City</label>
+            <select class="form-control" name="city">
+                <option value="Chicago">Chicago</option>
+            </select>
+        </div>
+        <div class="form-group col-sm-4">
+            <label>State</label>
+            <select class="form-control" name="state">
+                <option value="IL">Illinois</option>
+            </select>
+        </div>
+        <div class="form-group col-sm-4">
+            <label>Zip</label>
+            <input type="text" class="form-control" name="zip_code">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+            <label>Website</label>
+            <input type="text" class="form-control" name="website">
+        </div>
+        <div class="form-group col-sm-6">
+            <label>Phone Number</label>
+            <input type="text" class="form-control" placeholder="ex: (111) 111-1111" name="phone_number">
+        </div>
+    <button type="submit" class="btn btn-primary">Add Bookstore</button>
+</form>

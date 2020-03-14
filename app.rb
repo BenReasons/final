@@ -54,7 +54,6 @@ get "/stores/:id" do
     view "store"
 end
 
-
 get "/stores/:id/reviews/new" do
     @store = stores_table.where(id: params[:id]).to_a[0]
     view "new_review"
@@ -65,10 +64,30 @@ get "/stores/:id/reviews/create" do
     @store = stores_table.where(id: params["id"]).to_a[0]
     reviews_table.insert(store_id: params["id"],
                        user_id: session["user_id"],
-                       rating: session["rating"],
-                       known_for: session["known_for"],
+                       rating: params["rating"],
+                       known_for: params["known_for"],
                        comments: params["comments"])
     view "create_review"
+end
+
+get "/stores/new" do
+    puts stores_table.all
+    @stores = stores_table.all.to_a
+    view "new_store"
+end
+
+get "/stores/new/create" do
+    @store = stores_table.where(id: params[:id]).to_a[0]
+
+    stores_table.insert(store_name: params["store_name"],
+                        description: params["description"],
+                        neighborhood: params["neighborhood"],
+                        address: params["address"],
+                        city: params["city"],
+                        zip_code: params["zip_code"],
+                        website: params["website"],
+                        phone_number: params["phone_number"])
+    view "create_store"
 end
 
 get "/users/new" do
