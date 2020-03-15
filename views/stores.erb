@@ -5,4 +5,5 @@
 
 <% for store in @stores %>
     <p><a href="/stores/<%= store[:id] %>"><%= store[:store_name] %></a></p>
+    <p><%= @avg_rating %>
 <% end %>

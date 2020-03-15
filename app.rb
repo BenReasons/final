@@ -43,6 +43,9 @@ end
 get "/stores/new" do
     puts stores_table.all
     @stores = stores_table.all.to_a
+    @store = stores_table.where(id: params[:id]).to_a[0]
+    @reviews = reviews_table.where(store_id: @store[:id])
+    @avg_rating = @reviews.avg(:rating)
     view "new_store"
 end
 

@@ -28,10 +28,12 @@
 <div class="row">
     <div class="col-sm-9">
         <h3>Reviews Section</h3>
+        <hr class="my-sm-4">
         <% for review in @reviews %>
             <p><%= @users_table.where(id: review[:user_id]).to_a[0][:name] %></p>
             <p><%= review[:known_for] %></p>
             <p><%= review[:comments] %></p>
+            <hr class="my-sm-4">
         <% end %>
     </div>
 </div>

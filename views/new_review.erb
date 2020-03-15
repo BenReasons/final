@@ -1,15 +1,34 @@
 <h1>Review for <%= @store[:store_name] %></h1>
 
 <form action="/stores/<%= @store[:id] %>/reviews/create">
-    <div class="form-group">
-        <label>Rating</label>
-        <select class="form-control" name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+    <div class="row">
+        <div class="col-sm-12">
+            <label>Rating out of 5</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" value="1" name="rating">
+                <label class="form-check-label">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" value="2" name="rating">
+                <label class="form-check-label">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" value="3" name="rating">
+                <label class="form-check-label">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" value="4" name="rating">
+                <label class="form-check-label">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" value="5" name="rating">
+                <label class="form-check-label">5</label>
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <label>Known For</label>
