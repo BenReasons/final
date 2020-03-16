@@ -15,6 +15,20 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
+# put your API credentials here (found on your Twilio dashboard)
+account_sid = ENV["ACCOUNT_SID"]
+auth_token = ENV["AUTH_TOKEN"]
+
+# set up a client to talk to the Twilio REST API
+client = Twilio::REST::Client.new(account_sid, auth_token)
+
+# send the SMS from your trial Twilio number to your verified non-Twilio number
+client.messages.create(
+ from: "+12054790201", 
+ to: "+16307793924",
+ body: "Someone created a new store. Make sure to verify authenticity of submission"
+)
+
 stores_table = DB.from(:stores)
 reviews_table = DB.from(:reviews)
 users_table = DB.from(:users)
@@ -47,17 +61,6 @@ get "/stores/create" do
                         zip_code: params["zip_code"],
                         website: params["website"],
                         phone_number: params["phone_number"])
-
-    account_sid = ENV["ACCOUNT_SID"]
-    auth_token = ENV["AUTH_TOKEN"]
-
-    client = Twilio::REST::Client.new(account_sid, auth_token)
-
-    client.messages.create(
-        from: "+12054790201", 
-        to: "+16307793924",
-        body: "Someone created a new store. Make sure to verify authenticity of submission"
-        )
 
     view "create_store"
 end
