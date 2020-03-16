@@ -15,13 +15,14 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
-# put your API credentials here (found on your Twilio dashboard)
+# Twilio API Credentials
 account_sid = ENV["ACCOUNT_SID"]
 auth_token = ENV["AUTH_TOKEN"]
 
-# set up a client to talk to the Twilio REST API
+# Client to talk to the Twilio REST API
 client = Twilio::REST::Client.new(account_sid, auth_token)
 
+# Tables
 stores_table = DB.from(:stores)
 reviews_table = DB.from(:reviews)
 users_table = DB.from(:users)
@@ -43,6 +44,7 @@ get "/stores/new" do
     view "new_store"
 end
 
+# Users can create new stores for review. When a new store is added, I will receive a text message
 get "/stores/create" do
     @store = stores_table.where(id: params[:id]).to_a[0]
 
