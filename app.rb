@@ -44,8 +44,6 @@ get "/stores/new" do
     puts stores_table.all
     @stores = stores_table.all.to_a
     @store = stores_table.where(id: params[:id]).to_a[0]
-    @reviews = reviews_table.where(store_id: @store[:id])
-    @avg_rating = @reviews.avg(:rating)
     view "new_store"
 end
 
@@ -73,6 +71,8 @@ get "/stores/:id" do
     lat_long = results.first.coordinates
     @lat = "#{lat_long[0]}"
     @long = "#{lat_long[1]}"
+    
+    @avg_rating = @reviews.avg(:rating)
 
     view "store"
 end
