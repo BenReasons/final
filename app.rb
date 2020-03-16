@@ -15,16 +15,16 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
-account_sid = "AC5368d4383899306ddc2c299e97f20bad"
-auth_token = "96a9343b5449bbfa209de19ac330a69f"
+# account_sid = "AC5368d4383899306ddc2c299e97f20bad"
+# auth_token = "96a9343b5449bbfa209de19ac330a69f"
 
-client = Twilio::REST::Client.new(account_sid, auth_token)
+# client = Twilio::REST::Client.new(account_sid, auth_token)
 
-client.messages.create(
-  from: "+12054790201", 
-  to: "+16307793924",
-  body: "Hey KIEI 451!"
-)
+# client.messages.create(
+#   from: "+12054790201", 
+#   to: "+16307793924",
+#   body: "Hey KIEI 451!"
+# )
 
 stores_table = DB.from(:stores)
 reviews_table = DB.from(:reviews)
